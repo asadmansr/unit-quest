@@ -21,25 +21,25 @@ struct Avatar: View {
 }
 
 struct UnitView: View {
-    var character: UnitDetail
+    var unit: UnitDetail
     
-    init(_ character: UnitDetail) {
-        self.character = character
+    init(_ unit: UnitDetail) {
+        self.unit = unit
     }
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 HStack {
-                    Avatar(unit: character).padding(.trailing, 4)
-                    UnitNameView(unit: character)
+                    Avatar(unit: unit).padding(.trailing, 4)
+                    UnitNameView(unit: unit)
                 }
                 VStack(alignment: .leading, spacing: 6) {
-                    ProgressView("", value: 60, total: 100)
-                    Text("My first adventure awaits")
-                        .font(.callout)
+                    CustomProgressView()
+                    Text(unit.task)
+                        .font(.system(size: 15.0))
                         .lineLimit(2)
-                        .padding(.top, 4)
+                        .padding(.top, 12)
                 }
             }
         }
@@ -59,6 +59,20 @@ struct UnitNameView: View {
                 .minimumScaleFactor(0.25)
             Text("Level \(unit.level)")
                 .minimumScaleFactor(0.5)
+        }
+    }
+}
+
+
+struct CustomProgressView: View {
+    var body: some View {
+        ZStack(alignment: .leading) {
+            ZStack {}
+                .frame(width: 100, height: 6, alignment: .center)
+                .background(RoundedRectangle(cornerRadius: 3).fill(Color.blue))
+            ZStack(alignment: Alignment(horizontal: .leading, vertical: .center),content: {})
+                .frame(width: 60, height: 6, alignment: .leading)
+                .background(RoundedRectangle(cornerRadius: 3).fill(Color.green))
         }
     }
 }

@@ -13,6 +13,8 @@ struct UnitDetail {
     let level: Int
     let abilities: [String]
     let rewards: [String]
+    let task: String
+    let url: URL
     
     static let warrior = UnitDetail(
         name: "Knight",
@@ -27,7 +29,9 @@ struct UnitDetail {
             "- Gain extra task",
             "- Deadline extended for extra 24 hours",
             "- Gain 3 quest XP for completing a single quest"
-        ]
+        ],
+        task: "Save the princess",
+        url: URL(string: "app:///knight")!
     )
     
     static let wizard = UnitDetail(
@@ -43,6 +47,8 @@ struct UnitDetail {
             "- Gain two extra task",
             "- Bring a quest back from the dead",
             "- Gain 5 quest XP for completing a single quest"
-        ]
+        ],
+        task: "Kill the dragon",
+        url: URL(string: "app:///wizard")!
     )
 }

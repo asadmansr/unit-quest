@@ -19,6 +19,16 @@
 		0511F47C25E1598F006B8331 /* UnitDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F47B25E1598F006B8331 /* UnitDetail.swift */; };
 		0511F48525E1788F006B8331 /* UnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F48425E1788F006B8331 /* UnitView.swift */; };
 		0511F48A25E180BA006B8331 /* QuestItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F48925E180BA006B8331 /* QuestItems.swift */; };
+		0511F49525E1905A006B8331 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0511F49425E1905A006B8331 /* WidgetKit.framework */; };
+		0511F49725E1905A006B8331 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0511F49625E1905A006B8331 /* SwiftUI.framework */; };
+		0511F49A25E1905A006B8331 /* UnitQuestWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F49925E1905A006B8331 /* UnitQuestWidget.swift */; };
+		0511F49D25E1905C006B8331 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0511F49C25E1905C006B8331 /* Assets.xcassets */; };
+		0511F49F25E1905C006B8331 /* UnitQuestWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0511F49B25E1905A006B8331 /* UnitQuestWidget.intentdefinition */; };
+		0511F4A025E1905C006B8331 /* UnitQuestWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0511F49B25E1905A006B8331 /* UnitQuestWidget.intentdefinition */; };
+		0511F4A325E1905C006B8331 /* UnitQuestWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0511F49225E1905A006B8331 /* UnitQuestWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0511F4AC25E1907B006B8331 /* UnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F48425E1788F006B8331 /* UnitView.swift */; };
+		0511F4AD25E1907B006B8331 /* QuestItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F48925E180BA006B8331 /* QuestItems.swift */; };
+		0511F4B125E1907B006B8331 /* UnitDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F47B25E1598F006B8331 /* UnitDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +46,28 @@
 			remoteGlobalIDString = 0511F43A25E14994006B8331;
 			remoteInfo = "Unit Quest";
 		};
+		0511F4A125E1905C006B8331 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0511F43325E14994006B8331 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0511F49125E1905A006B8331;
+			remoteInfo = UnitQuestWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0511F4A725E1905C006B8331 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0511F4A325E1905C006B8331 /* UnitQuestWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0511F43B25E14995006B8331 /* Unit Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unit Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +88,13 @@
 		0511F47B25E1598F006B8331 /* UnitDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitDetail.swift; sourceTree = "<group>"; };
 		0511F48425E1788F006B8331 /* UnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitView.swift; sourceTree = "<group>"; };
 		0511F48925E180BA006B8331 /* QuestItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestItems.swift; sourceTree = "<group>"; };
+		0511F49225E1905A006B8331 /* UnitQuestWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UnitQuestWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0511F49425E1905A006B8331 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		0511F49625E1905A006B8331 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0511F49925E1905A006B8331 /* UnitQuestWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitQuestWidget.swift; sourceTree = "<group>"; };
+		0511F49B25E1905A006B8331 /* UnitQuestWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = UnitQuestWidget.intentdefinition; sourceTree = "<group>"; };
+		0511F49C25E1905C006B8331 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0511F49E25E1905C006B8331 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +119,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0511F48F25E1905A006B8331 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0511F49725E1905A006B8331 /* SwiftUI.framework in Frameworks */,
+				0511F49525E1905A006B8331 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -90,6 +137,8 @@
 				0511F43D25E14995006B8331 /* Unit Quest */,
 				0511F45425E14996006B8331 /* Unit QuestTests */,
 				0511F45F25E14996006B8331 /* Unit QuestUITests */,
+				0511F49825E1905A006B8331 /* UnitQuestWidget */,
+				0511F49325E1905A006B8331 /* Frameworks */,
 				0511F43C25E14995006B8331 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +149,7 @@
 				0511F43B25E14995006B8331 /* Unit Quest.app */,
 				0511F45125E14996006B8331 /* Unit QuestTests.xctest */,
 				0511F45C25E14996006B8331 /* Unit QuestUITests.xctest */,
+				0511F49225E1905A006B8331 /* UnitQuestWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,6 +222,26 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		0511F49325E1905A006B8331 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0511F49425E1905A006B8331 /* WidgetKit.framework */,
+				0511F49625E1905A006B8331 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0511F49825E1905A006B8331 /* UnitQuestWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0511F49925E1905A006B8331 /* UnitQuestWidget.swift */,
+				0511F49B25E1905A006B8331 /* UnitQuestWidget.intentdefinition */,
+				0511F49C25E1905C006B8331 /* Assets.xcassets */,
+				0511F49E25E1905C006B8331 /* Info.plist */,
+			);
+			path = UnitQuestWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,10 +252,12 @@
 				0511F43725E14994006B8331 /* Sources */,
 				0511F43825E14994006B8331 /* Frameworks */,
 				0511F43925E14994006B8331 /* Resources */,
+				0511F4A725E1905C006B8331 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0511F4A225E1905C006B8331 /* PBXTargetDependency */,
 			);
 			name = "Unit Quest";
 			productName = "Unit Quest";
@@ -228,6 +300,23 @@
 			productReference = 0511F45C25E14996006B8331 /* Unit QuestUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		0511F49125E1905A006B8331 /* UnitQuestWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0511F4A425E1905C006B8331 /* Build configuration list for PBXNativeTarget "UnitQuestWidgetExtension" */;
+			buildPhases = (
+				0511F48E25E1905A006B8331 /* Sources */,
+				0511F48F25E1905A006B8331 /* Frameworks */,
+				0511F49025E1905A006B8331 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnitQuestWidgetExtension;
+			productName = UnitQuestWidgetExtension;
+			productReference = 0511F49225E1905A006B8331 /* UnitQuestWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -248,6 +337,9 @@
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = 0511F43A25E14994006B8331;
 					};
+					0511F49125E1905A006B8331 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 				};
 			};
 			buildConfigurationList = 0511F43625E14994006B8331 /* Build configuration list for PBXProject "Unit Quest" */;
@@ -266,6 +358,7 @@
 				0511F43A25E14994006B8331 /* Unit Quest */,
 				0511F45025E14996006B8331 /* Unit QuestTests */,
 				0511F45B25E14996006B8331 /* Unit QuestUITests */,
+				0511F49125E1905A006B8331 /* UnitQuestWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -294,6 +387,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0511F49025E1905A006B8331 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0511F49D25E1905C006B8331 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -301,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0511F4A025E1905C006B8331 /* UnitQuestWidget.intentdefinition in Sources */,
 				0511F47C25E1598F006B8331 /* UnitDetail.swift in Sources */,
 				0511F47225E14F9C006B8331 /* UnitDetailView.swift in Sources */,
 				0511F44B25E14995006B8331 /* Unit_Quest.xcdatamodeld in Sources */,
@@ -328,6 +430,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0511F48E25E1905A006B8331 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0511F4AC25E1907B006B8331 /* UnitView.swift in Sources */,
+				0511F49F25E1905C006B8331 /* UnitQuestWidget.intentdefinition in Sources */,
+				0511F49A25E1905A006B8331 /* UnitQuestWidget.swift in Sources */,
+				0511F4AD25E1907B006B8331 /* QuestItems.swift in Sources */,
+				0511F4B125E1907B006B8331 /* UnitDetail.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -340,6 +454,11 @@
 			isa = PBXTargetDependency;
 			target = 0511F43A25E14994006B8331 /* Unit Quest */;
 			targetProxy = 0511F45D25E14996006B8331 /* PBXContainerItemProxy */;
+		};
+		0511F4A225E1905C006B8331 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0511F49125E1905A006B8331 /* UnitQuestWidgetExtension */;
+			targetProxy = 0511F4A125E1905C006B8331 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -463,6 +582,7 @@
 		0511F46625E14996006B8331 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -484,6 +604,7 @@
 		0511F46725E14996006B8331 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -582,6 +703,46 @@
 			};
 			name = Release;
 		};
+		0511F4A525E1905C006B8331 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = UnitQuestWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "asadmansoor.Unit-Quest.UnitQuestWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0511F4A625E1905C006B8331 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = UnitQuestWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "asadmansoor.Unit-Quest.UnitQuestWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -617,6 +778,15 @@
 			buildConfigurations = (
 				0511F46C25E14996006B8331 /* Debug */,
 				0511F46D25E14996006B8331 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0511F4A425E1905C006B8331 /* Build configuration list for PBXNativeTarget "UnitQuestWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0511F4A525E1905C006B8331 /* Debug */,
+				0511F4A625E1905C006B8331 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

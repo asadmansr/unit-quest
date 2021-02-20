@@ -43,6 +43,10 @@ struct ContentView: View {
                 UITableViewCell.appearance().backgroundColor = UIColor.white
             }
             .navigationBarTitle("Your Units")
+            .onOpenURL(perform: { (url) in
+                self.isWizardActive = url == UnitDetail.wizard.url
+                self.isWarriorActive = url == UnitDetail.warrior.url
+            })
         }
     }
 }
