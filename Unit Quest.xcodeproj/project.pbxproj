@@ -15,6 +15,8 @@
 		0511F44B25E14995006B8331 /* Unit_Quest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0511F44925E14995006B8331 /* Unit_Quest.xcdatamodeld */; };
 		0511F45625E14996006B8331 /* Unit_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F45525E14996006B8331 /* Unit_QuestTests.swift */; };
 		0511F46125E14996006B8331 /* Unit_QuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F46025E14996006B8331 /* Unit_QuestUITests.swift */; };
+		0511F47225E14F9C006B8331 /* UnitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F47125E14F9C006B8331 /* UnitDetailView.swift */; };
+		0511F47C25E1598F006B8331 /* UnitDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511F47B25E1598F006B8331 /* UnitDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		0511F45C25E14996006B8331 /* Unit QuestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit QuestUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0511F46025E14996006B8331 /* Unit_QuestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit_QuestUITests.swift; sourceTree = "<group>"; };
 		0511F46225E14996006B8331 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0511F47125E14F9C006B8331 /* UnitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitDetailView.swift; sourceTree = "<group>"; };
+		0511F47B25E1598F006B8331 /* UnitDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +103,8 @@
 		0511F43D25E14995006B8331 /* Unit Quest */ = {
 			isa = PBXGroup;
 			children = (
-				0511F43E25E14995006B8331 /* Unit_QuestApp.swift */,
-				0511F44025E14995006B8331 /* ContentView.swift */,
+				0511F47625E14FD7006B8331 /* App */,
+				0511F47A25E15967006B8331 /* Data */,
 				0511F44225E14995006B8331 /* Assets.xcassets */,
 				0511F44725E14995006B8331 /* Persistence.swift */,
 				0511F44C25E14995006B8331 /* Info.plist */,
@@ -134,6 +138,24 @@
 				0511F46225E14996006B8331 /* Info.plist */,
 			);
 			path = "Unit QuestUITests";
+			sourceTree = "<group>";
+		};
+		0511F47625E14FD7006B8331 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0511F43E25E14995006B8331 /* Unit_QuestApp.swift */,
+				0511F44025E14995006B8331 /* ContentView.swift */,
+				0511F47125E14F9C006B8331 /* UnitDetailView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0511F47A25E15967006B8331 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0511F47B25E1598F006B8331 /* UnitDetail.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +287,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0511F47C25E1598F006B8331 /* UnitDetail.swift in Sources */,
+				0511F47225E14F9C006B8331 /* UnitDetailView.swift in Sources */,
 				0511F44B25E14995006B8331 /* Unit_Quest.xcdatamodeld in Sources */,
 				0511F44825E14995006B8331 /* Persistence.swift in Sources */,
 				0511F44125E14995006B8331 /* ContentView.swift in Sources */,
