@@ -99,6 +99,7 @@
 		0511F49B25E1905A006B8331 /* UnitQuestWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = UnitQuestWidget.intentdefinition; sourceTree = "<group>"; };
 		0511F49C25E1905C006B8331 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0511F49E25E1905C006B8331 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0511F4EB25E2B935006B8331 /* UnitQuestWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UnitQuestWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +143,7 @@
 		0511F43225E14994006B8331 = {
 			isa = PBXGroup;
 			children = (
+				0511F4EB25E2B935006B8331 /* UnitQuestWidgetExtension.entitlements */,
 				0511F43D25E14995006B8331 /* Unit Quest */,
 				0511F45425E14996006B8331 /* Unit QuestTests */,
 				0511F45F25E14996006B8331 /* Unit QuestUITests */,
@@ -727,7 +729,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = UnitQuestWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = UnitQuestWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -747,6 +751,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = UnitQuestWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = UnitQuestWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

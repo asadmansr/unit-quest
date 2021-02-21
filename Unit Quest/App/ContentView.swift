@@ -57,9 +57,8 @@ struct ContentView: View {
     }
     
     private func loadData() {
-        let realm = try! Realm()
+        let realm = myRealm
         let units = realm.objects(UnitEntity.self)
-        
         print(units)
         
         if (units.count == 0){
@@ -103,11 +102,11 @@ struct ContentView: View {
     }
 }
 
-class UnitEntity: Object {
-    @objc dynamic var name = ""
-    @objc dynamic var level = 0
-    @objc dynamic var completedQuest = 0
-}
+//class UnitEntity: Object {
+//    @objc dynamic var name = ""
+//    @objc dynamic var level = 0
+//    @objc dynamic var completedQuest = 0
+//}
 
 
 struct UnitRowView: View {

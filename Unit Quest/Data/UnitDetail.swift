@@ -61,5 +61,79 @@ struct UnitDetail {
         count: 0,
         levelThreshold: 24
     )
+    
+    static func loadData(name: String, completion:@escaping ([UnitDetail]?, Error?) -> Void) {
+        do {
+            let realm = myRealm
+            let units = realm.objects(UnitEntity.self)
+            var items: [UnitDetail] = [UnitDetail]()
+            
+            for i in units {
+                if ((i.name == "Knight") && (name == "Knight") ){
+                    let quests =  realm.objects(QuestEntity.self).filter("unit == 'Knight'")
+                    print(quests)
+                    
+                    var current = ""
+                    if (quests.count > 0){
+                        current = quests[0].quest
+                    } else {
+                        current = "No new questsasdsad"
+                    }
+                    
+                    var warrior = UnitDetail.warrior
+                    warrior.level = i.level
+                    warrior.count = i.completedQuest
+                    warrior.currentQuest = current
+                    items.append(warrior)
+                    
+                } else if ((i.name == "Wizard") && (name == "Wizard")) {
+                    let quests =  realm.objects(QuestEntity.self).filter("unit == 'Wizard'")
+                    print(quests)
+
+                    var current = ""
+                    if (quests.count > 0){
+                        current = quests[0].quest
+                    } else {
+                        current = "No new questsasdsad"
+                    }
+
+                    var wizard = UnitDetail.wizard
+                    wizard.level = i.level
+                    wizard.count = i.completedQuest
+                    wizard.currentQuest = current
+                    items.append(wizard)
+                }
+            }
+            
+            completion(items, nil)
+        } catch {
+            completion(nil, error)
+        }
+    }
 }
 
+var myRealm: Realm {
+    var directory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.asadmansoor.Unit-Quest")!
+    directory.appendPathComponent("db.realm", isDirectory: true)
+    let configuration = Realm.Configuration(fileURL: directory, schemaVersion: myRealmSchemaVersion)
+    let realm = try! Realm(configuration: configuration)
+    return realm
+}
+
+var myRealmSchemaVersion: UInt64 {
+    return 1
+}
+
+class UnitEntity: Object {
+    @objc dynamic var name = ""
+    @objc dynamic var level = 0
+    @objc dynamic var completedQuest = 0
+}
+
+class QuestEntity: Object {
+    @objc dynamic var id = ""
+    @objc dynamic var unit = ""
+    @objc dynamic var quest = ""
+    @objc dynamic var completed = false
+    @objc dynamic var dateCreated = 0
+}

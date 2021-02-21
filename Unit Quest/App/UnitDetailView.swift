@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import WidgetKit
 
 struct UnitDetailView: View {
     
@@ -14,7 +15,7 @@ struct UnitDetailView: View {
     @State private var currentUnit: UnitDetail = .wizard
     @State private var items: [QuestItems] = []
     @State var quest: String = ""
-    let realm = try! Realm()
+    let realm = myRealm
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -183,6 +184,7 @@ struct UnitDetailView: View {
         try! realm.write {
             realm.add(newQuest)
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func deleteFromDatabase(id: String) {
@@ -231,6 +233,8 @@ struct UnitDetailView: View {
             currentUnit.level = level
             currentUnit.count = completedQuest!
         }
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func getTimestamp() -> Int {
@@ -238,11 +242,4 @@ struct UnitDetailView: View {
     }
 }
 
-class QuestEntity: Object {
-    @objc dynamic var id = ""
-    @objc dynamic var unit = ""
-    @objc dynamic var quest = ""
-    @objc dynamic var completed = false
-    @objc dynamic var dateCreated = 0
-}
 

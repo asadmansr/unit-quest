@@ -15,11 +15,21 @@ struct Provider: IntentTimelineProvider {
         switch configuration.unit {
         case .knight:
             return .warrior
-        
         case .wizard:
             return .wizard
         default:
             return .warrior
+        }
+    }
+    
+    func unitName(for configuration: ConfigurationIntent) -> String {
+        switch configuration.unit {
+        case .knight:
+            return "Knight"
+        case .wizard:
+            return "Wizard"
+        default:
+            return "Knight"
         }
     }
     
@@ -34,8 +44,20 @@ struct Provider: IntentTimelineProvider {
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         
-        let selectedUnit = unit(for: configuration)
-        let entries: [SimpleEntry] = [SimpleEntry(date: Date(), configuration: configuration, unit: selectedUnit)]
+        UnitDetail.loadData(name: unitName(for: configuration)) { (characters, error) in
+            guard let characters = characters else {
+                let timeline = Timeline(entries: [SimpleEntry(date: Date(), configuration: configuration, unit: unit(for: configuration))], policy: .atEnd)
+                completion(timeline)
+                return
+            }
+            
+            //let timeline = Timeline(entries: [LeaderboardEntry(date: Date(), characters: characters)], policy: .atEnd)
+            let timeline = Timeline(entries: [SimpleEntry(date: Date(), configuration: configuration, unit: characters[0])], policy: .atEnd)
+            completion(timeline)
+        }
+        
+        //let selectedUnit = unit(for: configuration)
+        //let entries: [SimpleEntry] = [SimpleEntry(date: Date(), configuration: configuration, unit: selectedUnit)]
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
 //        let currentDate = Date()
@@ -45,8 +67,8 @@ struct Provider: IntentTimelineProvider {
 //            entries.append(entry)
 //        }
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+        //let timeline = Timeline(entries: entries, policy: .atEnd)
+        //completion(timeline)
     }
 }
 
