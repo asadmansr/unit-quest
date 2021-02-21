@@ -81,6 +81,7 @@ struct ContentView: View {
                     UITableView.appearance().backgroundColor = UIColor.white
                     UITableViewCell.appearance().backgroundColor = UIColor.white
                     loadData()
+                    deleteExpiredQuests()
                 }
                 .navigationBarTitle("Your Units").foregroundColor(Color.white)
                 .onOpenURL(perform: { (url) in
@@ -131,6 +132,22 @@ struct ContentView: View {
                     wizard.level = i.level
                     wizard.count = i.completedQuest
                     items.append(wizard)
+                }
+            }
+        }
+    }
+    
+    // 24-hours expiry
+    private func deleteExpiredQuests() {
+        let realm = myRealm
+        let quests = realm.objects(QuestEntity.self)
+        
+        for i in quests {
+            let now = Int(Date().timeIntervalSince1970)
+            if ((now - i.dateCreated) > 86400){
+                print("delete")
+                try! realm.write {
+                    realm.delete(i)
                 }
             }
         }

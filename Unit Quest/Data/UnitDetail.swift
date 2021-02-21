@@ -77,7 +77,7 @@ struct UnitDetail {
                     if (quests.count > 0){
                         current = quests[0].quest
                     } else {
-                        current = "No new questsasdsad"
+                        current = "No new quests"
                     }
                     
                     var warrior = UnitDetail.warrior
@@ -94,7 +94,7 @@ struct UnitDetail {
                     if (quests.count > 0){
                         current = quests[0].quest
                     } else {
-                        current = "No new questsasdsad"
+                        current = "No new quests"
                     }
 
                     var wizard = UnitDetail.wizard
