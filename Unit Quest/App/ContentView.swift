@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ContentView: View {
     
     @State var isWarriorActive: Bool = false
     @State var isWizardActive: Bool = false
+    @State var items: [UnitDetail] = [UnitDetail]()
     
     var body: some View {
         NavigationView {
@@ -24,11 +26,14 @@ struct ContentView: View {
                     .padding(.bottom, 16)
                 
                 List {
-                    NavigationLink(destination: UnitDetailView(unit: .warrior), isActive: $isWarriorActive) {
-                        UnitRowView(unit: .warrior)
-                    }
-                    NavigationLink(destination: UnitDetailView(unit: .wizard), isActive: $isWizardActive) {
-                        UnitRowView(unit: .wizard)
+                    if (items.count > 0){
+                        NavigationLink(destination: UnitDetailView(unit: items[0]), isActive: (items[0].name == "Knight") ? $isWarriorActive : $isWizardActive) {
+                            UnitRowView(unit: items[0])
+                        }
+                        
+                        NavigationLink(destination: UnitDetailView(unit: items[1]), isActive: (items[1].name == "Wizard") ? $isWizardActive : $isWarriorActive) {
+                            UnitRowView(unit: items[1])
+                        }
                     }
                 }.listStyle(PlainListStyle())
                 
@@ -41,6 +46,7 @@ struct ContentView: View {
             .onAppear {
                 UITableView.appearance().backgroundColor = UIColor.white
                 UITableViewCell.appearance().backgroundColor = UIColor.white
+                loadData()
             }
             .navigationBarTitle("Your Units")
             .onOpenURL(perform: { (url) in
@@ -49,7 +55,60 @@ struct ContentView: View {
             })
         }
     }
+    
+    private func loadData() {
+        let realm = try! Realm()
+        let units = realm.objects(UnitEntity.self)
+        
+        print(units)
+        
+        if (units.count == 0){
+            UnitDetail.warrior.level = 1
+            UnitDetail.wizard.level = 1
+            
+            let warrior = UnitDetail.warrior
+            let wizard = UnitDetail.wizard
+            
+            let warriorEntity = UnitEntity()
+            warriorEntity.name = warrior.name
+            warriorEntity.level = warrior.level
+            
+            let wizardEntity = UnitEntity()
+            wizardEntity.name = wizard.name
+            wizardEntity.level = wizard.level
+            
+            try! realm.write {
+                realm.add(warriorEntity)
+                realm.add(wizardEntity)
+            }
+            
+            items.append(warrior)
+            items.append(wizard)
+        } else {
+            self.items.removeAll()
+            for i in units {
+                if (i.name == "Knight") {
+                    var warrior = UnitDetail.warrior
+                    warrior.level = i.level
+                    warrior.count = i.completedQuest
+                    items.append(warrior)
+                } else if (i.name == "Wizard") {
+                    var wizard = UnitDetail.wizard
+                    wizard.level = i.level
+                    wizard.count = i.completedQuest
+                    items.append(wizard)
+                }
+            }
+        }
+    }
 }
+
+class UnitEntity: Object {
+    @objc dynamic var name = ""
+    @objc dynamic var level = 0
+    @objc dynamic var completedQuest = 0
+}
+
 
 struct UnitRowView: View {
     let unit: UnitDetail

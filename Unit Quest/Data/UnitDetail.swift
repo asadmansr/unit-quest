@@ -6,17 +6,21 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct UnitDetail {
     let name: String
     let image: String
-    let level: Int
+    var level: Int
     let abilities: [String]
     let rewards: [String]
-    let task: String
     let url: URL
+    var currentQuest: String
+    let maxQuest: Int
+    var count: Int
+    var levelThreshold: Int
     
-    static let warrior = UnitDetail(
+    static var warrior = UnitDetail(
         name: "Knight",
         image: "Knight",
         level: 10,
@@ -30,11 +34,14 @@ struct UnitDetail {
             "- Deadline extended for extra 24 hours",
             "- Gain 3 quest XP for completing a single quest"
         ],
-        task: "Save the princess",
-        url: URL(string: "app:///knight")!
+        url: URL(string: "app:///knight")!,
+        currentQuest: "No new quests",
+        maxQuest: 2,
+        count: 0,
+        levelThreshold: 10
     )
     
-    static let wizard = UnitDetail(
+    static var wizard = UnitDetail(
         name: "Wizard",
         image: "Wizard",
         level: 3,
@@ -48,7 +55,11 @@ struct UnitDetail {
             "- Bring a quest back from the dead",
             "- Gain 5 quest XP for completing a single quest"
         ],
-        task: "Kill the dragon",
-        url: URL(string: "app:///wizard")!
+        url: URL(string: "app:///wizard")!,
+        currentQuest: "No new quests",
+        maxQuest: 4,
+        count: 0,
+        levelThreshold: 24
     )
 }
+

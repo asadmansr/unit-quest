@@ -9,5 +9,7 @@ import Foundation
 
 struct QuestItems: Identifiable {
     let id = UUID()
+    let uid: String
     let title: String
+    let completed: Bool
 }

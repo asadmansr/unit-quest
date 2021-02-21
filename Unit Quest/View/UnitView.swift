@@ -35,8 +35,8 @@ struct UnitView: View {
                     UnitNameView(unit: unit)
                 }
                 VStack(alignment: .leading, spacing: 6) {
-                    CustomProgressView()
-                    Text(unit.task)
+                    CustomProgressView(progress: ((unit.count % unit.levelThreshold) * 10))
+                    Text(unit.currentQuest)
                         .font(.system(size: 15.0))
                         .lineLimit(2)
                         .padding(.top, 12)
@@ -65,13 +65,16 @@ struct UnitNameView: View {
 
 
 struct CustomProgressView: View {
+    
+    let progress: Int
+    
     var body: some View {
         ZStack(alignment: .leading) {
             ZStack {}
                 .frame(width: 100, height: 6, alignment: .center)
                 .background(RoundedRectangle(cornerRadius: 3).fill(Color.blue))
             ZStack(alignment: Alignment(horizontal: .leading, vertical: .center),content: {})
-                .frame(width: 60, height: 6, alignment: .leading)
+                .frame(width: CGFloat(progress), height: 6, alignment: .leading)
                 .background(RoundedRectangle(cornerRadius: 3).fill(Color.green))
         }
     }
