@@ -5,6 +5,7 @@
 //  Created by Asad Mansoor (LCL) on 2021-02-20.
 //
 
+import Combine
 import SwiftUI
 import RealmSwift
 
@@ -14,45 +15,79 @@ struct ContentView: View {
     @State var isWizardActive: Bool = false
     @State var items: [UnitDetail] = [UnitDetail]()
     
+    
+    @State private var imageIndex = 0
+    private let images = (0...9).map { "Run\($0)" }
+    private var timer = LoadingTimer()
+    
+    
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Your units are unique. They help you track and complete quests. Any quests not completed in 24 hours will be deleted and will not count towards your progress. So pick your quests wisely.")
-                    .font(.system(size: 15.0))
-                    .foregroundColor(.gray)
-                    .fontWeight(.medium)
-                    .padding(.horizontal, 24)
-                    .padding(.top, 8)
-                    .padding(.bottom, 16)
-                
-                List {
-                    if (items.count > 0){
-                        NavigationLink(destination: UnitDetailView(unit: items[0]), isActive: (items[0].name == "Knight") ? $isWarriorActive : $isWizardActive) {
-                            UnitRowView(unit: items[0])
+            VStack{
+                ZStack {
+                    Image("Background")
+                        .resizable()
+                        .edgesIgnoringSafeArea(.all)
+                    VStack{
+                        Spacer()
+                        Image(images[imageIndex])
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 100.0, height:100, alignment: .bottom)
+                            .padding(.bottom, 30)
+                            .onReceive(
+                                timer.publisher,
+                                perform: { _ in
+                                    self.imageIndex = self.imageIndex + 1
+                                    if self.imageIndex >= 7 { self.imageIndex = 0 }
+                                }
+                            )
+                            .onAppear {
+                                self.timer.start()
+                            }
+                            .onDisappear {
+                                self.timer.cancel()
+                            }
+                    }.frame(maxHeight: .infinity)
+                }
+                VStack {
+                    Text("Your units are unique. They help you track and complete quests. Any quests not completed in 24 hours will be deleted, so pick your quests wisely. New units will be added in upcoming updates! ⚔️")
+                        .font(.system(size: 15.0))
+                        .foregroundColor(.gray)
+                        .fontWeight(.medium)
+                        .padding(.horizontal, 24)
+                        .padding(.top, 8)
+                        .padding(.bottom, 16)
+                    
+                    List {
+                        if (items.count > 0){
+                            NavigationLink(destination: UnitDetailView(unit: items[0]), isActive: (items[0].name == "Knight") ? $isWarriorActive : $isWizardActive) {
+                                UnitRowView(unit: items[0])
+                            }
+                            
+                            NavigationLink(destination: UnitDetailView(unit: items[1]), isActive: (items[1].name == "Wizard") ? $isWizardActive : $isWarriorActive) {
+                                UnitRowView(unit: items[1])
+                            }
                         }
-                        
-                        NavigationLink(destination: UnitDetailView(unit: items[1]), isActive: (items[1].name == "Wizard") ? $isWizardActive : $isWarriorActive) {
-                            UnitRowView(unit: items[1])
-                        }
-                    }
-                }.listStyle(PlainListStyle())
-                
-                Text("New units will be added in upcoming updates! ⚔️")
-                    .foregroundColor(.gray)
-                    .fontWeight(.bold)
-                    .padding(.horizontal, 36)
-                    .padding(.bottom, 64)
+                    }.listStyle(PlainListStyle())
+                }
+                .onAppear {
+                    UITableView.appearance().backgroundColor = UIColor.white
+                    UITableViewCell.appearance().backgroundColor = UIColor.white
+                    loadData()
+                }
+                .navigationBarTitle("Your Units").foregroundColor(Color.white)
+                .onOpenURL(perform: { (url) in
+                    self.isWizardActive = url == UnitDetail.wizard.url
+                    self.isWarriorActive = url == UnitDetail.warrior.url
+                })
             }
-            .onAppear {
-                UITableView.appearance().backgroundColor = UIColor.white
-                UITableViewCell.appearance().backgroundColor = UIColor.white
-                loadData()
-            }
-            .navigationBarTitle("Your Units")
-            .onOpenURL(perform: { (url) in
-                self.isWizardActive = url == UnitDetail.wizard.url
-                self.isWarriorActive = url == UnitDetail.warrior.url
-            })
         }
     }
     
@@ -102,12 +137,20 @@ struct ContentView: View {
     }
 }
 
-//class UnitEntity: Object {
-//    @objc dynamic var name = ""
-//    @objc dynamic var level = 0
-//    @objc dynamic var completedQuest = 0
-//}
-
+class LoadingTimer {
+    
+    var publisher = Timer.publish(every: 0.1, on: .main, in: .default)
+    private var timerCancellable: Cancellable?
+    
+    func start() {
+        publisher = Timer.publish(every: 0.1, on: .main, in: .default)
+        self.timerCancellable = publisher.connect()
+    }
+    
+    func cancel() {
+        self.timerCancellable?.cancel()
+    }
+}
 
 struct UnitRowView: View {
     let unit: UnitDetail
@@ -132,7 +175,6 @@ struct UnitRowView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 16.0)
-                
             }
         }
     }
